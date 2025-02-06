@@ -1,88 +1,56 @@
-import { Ionicons } from '@expo/vector-icons';
-import { Tabs } from 'expo-router';
+import { Stack } from 'expo-router';
 
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-import CustomIcon from '@/components/icon/custom-icon';
-import { COLOR_PALETTE } from '@/constants/color';
+import BottomNavigation from '@/components/common/bottom-nav';
 
 export default function TabLayout() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: COLOR_PALETTE.gray10,
-        headerShadowVisible: false,
-        headerTintColor: '#fff',
-        tabBarStyle: styles.tabBar,
-      }}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: '모집',
-          headerShown: false,
-          tabBarIcon: ({ color, focused }) => (
-            <Ionicons
-              name={focused ? 'search' : 'search-outline'}
-              color={color}
-              size={24}
-            />
-          ),
-        }}
-      />
-
-      <Tabs.Screen
-        name="feed"
-        options={{
-          title: '피드',
-          headerShown: false,
-          tabBarIcon: ({ color, focused, size }) => (
-            <CustomIcon
-              name="plus"
-              color={color}
-              size={size}
-            />
-          ),
-        }}
-      />
-
-      {/* <Tabs.Screen
-        name="add-menu"
-        options={{
-          title: '',
-          tabBarButton: () => (
-            <CustomIcon
-              name="plus"
-              color={COLOR_PALETTE.gray10}
-              size={24}
-            />
-          ),
-        }}
-        listeners={{
-          tabPress: (e) => {
-            // 실제 네비게이션 방지
-            e.preventDefault();
+    <View style={styles.container}>
+      <Stack
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#f4511e',
           },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          headerBackVisible: false,
+          headerLeft: () => (
+            <View>
+              <Text>키키키</Text>
+            </View>
+          ),
+          title: '',
         }}
-      /> */}
-
-      <Tabs.Screen
-        name="letter"
-        options={{ title: 'Letter' }}
-      />
-      <Tabs.Screen
-        name="my"
-        options={{ title: 'MyPage' }}
-      />
-    </Tabs>
+      >
+        <Stack.Screen
+          name="index"
+          options={{}}
+        />
+        <Stack.Screen
+          name="feed"
+          options={{}}
+        />
+        <Stack.Screen
+          name="letter"
+          options={{}}
+        />
+        <Stack.Screen
+          name="my"
+          options={{}}
+        />
+      </Stack>
+      <BottomNavigation />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  tabBar: {
-    backgroundColor: COLOR_PALETTE.gray100,
-    borderTopWidth: 1,
-    borderTopColor: 'black',
-    paddingHorizontal: 50,
+  container: {
+    flex: 1,
+    position: 'relative',
   },
+  btnContainer: {},
 });
