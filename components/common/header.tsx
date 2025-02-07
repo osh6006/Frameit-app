@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { COLOR_PALETTE } from '@/constants/color';
+import { COLOR_PALETTE } from '@/constants/theme';
 
 import Logo from './logo';
 
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: 'red',
+    backgroundColor: COLOR_PALETTE.gray100,
     borderBottomWidth: 1,
     borderColor: COLOR_PALETTE.gray80,
   },

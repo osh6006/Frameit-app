@@ -1,24 +1,28 @@
-import { Href, Tabs, useRouter } from 'expo-router';
+import { Href, useRouter, useSegments } from 'expo-router';
 
 import { useState } from 'react';
 import React from 'react';
-import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import { COLOR_PALETTE } from '@/constants/color';
+import { COLOR_PALETTE, FONT_SYSTEM } from '@/constants/theme';
+
+import CustomIcon from '../icon/custom-icon';
+import { getFontStyle } from '@/lib/util';
 
 export default function BottomNavigation() {
   const [modalVisible, setModalVisible] = useState(false);
-  const router = useRouter();
 
   return (
     <View style={styles.container}>
       <NavItem
         name="모집"
         path={'/(tabs)'}
+        icon={<CustomIcon name="search" />}
       />
       <NavItem
         name="피드"
         path={'/(tabs)/feed'}
+        icon={<CustomIcon name="feed" />}
       />
       <TouchableOpacity style={styles.item}>
         <Text>메뉴</Text>
@@ -26,10 +30,12 @@ export default function BottomNavigation() {
       <NavItem
         name="쪽지"
         path={'/(tabs)/letter'}
+        icon={<CustomIcon name="message" />}
       />
       <NavItem
         name="마이"
         path={'/(tabs)/my'}
+        icon={<CustomIcon name="my" />}
       />
     </View>
   );
@@ -48,16 +54,32 @@ const NavItem = ({
   const handlePress = () => {
     router.push(path);
   };
+  const segments = useSegments();
+  const isActive = path.toString().split('/').at(-1) === segments.at(-1);
+
   return (
     <TouchableOpacity
       style={styles.item}
       onPress={handlePress}
     >
-      {icon}
-      <Text>{name}</Text>
+      {icon &&
+        React.cloneElement(icon as React.ReactElement, {
+          color: isActive ? COLOR_PALETTE.gray10 : COLOR_PALETTE.gray60,
+        })}
+
+      <Text
+        style={{
+          ...styles.itemText,
+          color: isActive ? COLOR_PALETTE.gray10 : COLOR_PALETTE.gray60,
+        }}
+      >
+        {name}
+      </Text>
     </TouchableOpacity>
   );
 };
+
+const fontTiny = getFontStyle('tiny10');
 
 const styles = StyleSheet.create({
   container: {
@@ -73,6 +95,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 2,
     borderTopColor: COLOR_PALETTE.gray80,
   },
+
   item: {
     flex: 1,
     height: '100%',
@@ -80,8 +103,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     borderRadius: 10,
+    rowGap: 4,
   },
-  btnText: {
-    color: 'red',
+
+  itemText: {
+    fontSize: fontTiny.fontSize,
+    fontWeight: fontTiny.fontWeight,
+    lineHeight: fontTiny.lineHeight,
   },
 });
