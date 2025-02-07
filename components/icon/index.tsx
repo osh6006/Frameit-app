@@ -16,6 +16,7 @@ import MessageIcon from './lib/message';
 import MyIcon from './lib/my';
 import NotificationIcon from './lib/notification';
 import PlusIcon from './lib/plus';
+import PlusCircleIcon from './lib/plus-circle';
 import ProjectIcon from './lib/project';
 import ReloadIcon from './lib/reload';
 import SearchIcon from './lib/search';
@@ -42,6 +43,7 @@ const IconSet = {
   my: MyIcon,
   notification: NotificationIcon,
   plus: PlusIcon,
+  plusCircle: PlusCircleIcon,
   project: ProjectIcon,
   reload: ReloadIcon,
   search: SearchIcon,

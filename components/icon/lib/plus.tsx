@@ -7,6 +7,7 @@ const PlusIcon = ({ width, height, color, ...rest }: SvgProps) => (
     height={height}
     fill="none"
     {...rest}
+    viewBox="0 0 32 32"
   >
     <Path
       stroke={color}

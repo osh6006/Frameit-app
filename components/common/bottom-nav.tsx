@@ -4,10 +4,11 @@ import { useState } from 'react';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import { COLOR_PALETTE, FONT_SYSTEM } from '@/constants/theme';
+import { COLOR_PALETTE } from '@/constants/theme';
 
 import CustomIcon from '../icon/custom-icon';
 import { getFontStyle } from '@/lib/util';
+import CustomText from './custom-text';
 
 export default function BottomNavigation() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -25,7 +26,11 @@ export default function BottomNavigation() {
         icon={<CustomIcon name="feed" />}
       />
       <TouchableOpacity style={styles.item}>
-        <Text>메뉴</Text>
+        <CustomIcon
+          name="plusCircle"
+          width={32}
+          height={32}
+        />
       </TouchableOpacity>
       <NavItem
         name="쪽지"
@@ -67,14 +72,14 @@ const NavItem = ({
           color: isActive ? COLOR_PALETTE.gray10 : COLOR_PALETTE.gray60,
         })}
 
-      <Text
+      <CustomText
         style={{
           ...styles.itemText,
           color: isActive ? COLOR_PALETTE.gray10 : COLOR_PALETTE.gray60,
         }}
       >
         {name}
-      </Text>
+      </CustomText>
     </TouchableOpacity>
   );
 };

@@ -5,10 +5,11 @@ import { StyleSheet, Text, View } from 'react-native';
 import BottomNavigation from '@/components/common/bottom-nav';
 import Header from '@/components/common/header';
 import Logo from '@/components/common/logo';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function TabLayout() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Stack
         screenOptions={{
           headerStyle: {
@@ -37,7 +38,7 @@ export default function TabLayout() {
             );
           },
           title: '',
-          header(props) {
+          header() {
             return <Header />;
           },
         }}
@@ -60,7 +61,7 @@ export default function TabLayout() {
         />
       </Stack>
       <BottomNavigation />
-    </View>
+    </SafeAreaView>
   );
 }
 

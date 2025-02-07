@@ -18,7 +18,26 @@ type FontWeight =
   | '600'
   | '700'
   | '800'
-  | '900';
+  | '900'
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | 'ultralight'
+  | 'thin'
+  | 'light'
+  | 'medium'
+  | 'regular'
+  | 'semibold'
+  | 'condensedBold'
+  | 'condensed'
+  | 'heavy'
+  | 'black';
 
 export const getFontStyle = (key: FontKeys): FontStyle => {
   return {

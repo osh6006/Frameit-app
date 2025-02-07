@@ -80,7 +80,7 @@ export const FONT_SYSTEM = {
   /*   === tiny ===  */
   tiny10: {
     fontSize: 10,
-    fontWeight: '400',
+    fontWeight: 100,
     lineHeight: 14,
   },
 };
