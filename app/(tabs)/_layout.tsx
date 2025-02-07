@@ -10,8 +10,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 export default function TabLayout() {
   return (
     <SafeAreaView style={styles.container}>
+      <Header />
       <Stack
         screenOptions={{
+          headerShown: false,
           headerStyle: {
             backgroundColor: '#fff',
           },

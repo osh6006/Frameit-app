@@ -1,13 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { COLOR_PALETTE } from '@/constants/theme';
-
 import Logo from './logo';
 
-type Props = {};
-
-const Header = (props: Props) => {
+const Header = () => {
   const isLogin = true;
 
   return (
@@ -15,11 +13,11 @@ const Header = (props: Props) => {
       <Logo />
       {isLogin ? (
         <View>
-          <Text>로그인</Text>
+          <Text style={styles.text}>로그인</Text>
         </View>
       ) : (
         <View>
-          <Text>비 로그인</Text>
+          <Text style={styles.text}>비 로그인</Text>
         </View>
       )}
     </View>
@@ -30,9 +28,6 @@ export default Header;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    top: 0,
-    position: 'absolute',
     height: 60,
     width: '100%',
     flexDirection: 'row',
@@ -42,5 +37,9 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR_PALETTE.gray100,
     borderBottomWidth: 1,
     borderColor: COLOR_PALETTE.gray80,
+  },
+  text: {
+    color: 'white',
+    fontSize: 16,
   },
 });
