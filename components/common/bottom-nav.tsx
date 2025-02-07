@@ -4,6 +4,8 @@ import { useState } from 'react';
 import React from 'react';
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+import { COLOR_PALETTE } from '@/constants/color';
+
 export default function BottomNavigation() {
   const [modalVisible, setModalVisible] = useState(false);
   const router = useRouter();
@@ -33,7 +35,15 @@ export default function BottomNavigation() {
   );
 }
 
-const NavItem = ({ name, path }: { name: string; path: Href }) => {
+const NavItem = ({
+  name,
+  path,
+  icon = null,
+}: {
+  name: string;
+  path: Href;
+  icon?: React.ReactNode;
+}) => {
   const router = useRouter();
   const handlePress = () => {
     router.push(path);
@@ -43,6 +53,7 @@ const NavItem = ({ name, path }: { name: string; path: Href }) => {
       style={styles.item}
       onPress={handlePress}
     >
+      {icon}
       <Text>{name}</Text>
     </TouchableOpacity>
   );
@@ -59,15 +70,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 10,
+    borderTopWidth: 2,
+    borderTopColor: COLOR_PALETTE.gray80,
   },
   item: {
     flex: 1,
     height: '100%',
     alignItems: 'center',
+    flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: 'red',
     borderRadius: 10,
-    borderRightWidth: 2,
   },
   btnText: {
     color: 'red',

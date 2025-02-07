@@ -3,6 +3,8 @@ import { Stack } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 
 import BottomNavigation from '@/components/common/bottom-nav';
+import Header from '@/components/common/header';
+import Logo from '@/components/common/logo';
 
 export default function TabLayout() {
   return (
@@ -10,7 +12,7 @@ export default function TabLayout() {
       <Stack
         screenOptions={{
           headerStyle: {
-            backgroundColor: '#f4511e',
+            backgroundColor: '#fff',
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -19,10 +21,25 @@ export default function TabLayout() {
           headerBackVisible: false,
           headerLeft: () => (
             <View>
-              <Text>키키키</Text>
+              <Logo />
             </View>
           ),
+          headerRight(props) {
+            const isLogin = true;
+            return isLogin ? (
+              <View>
+                <Text>로그인</Text>
+              </View>
+            ) : (
+              <View>
+                <Text>비 로그인</Text>
+              </View>
+            );
+          },
           title: '',
+          header(props) {
+            return <Header />;
+          },
         }}
       >
         <Stack.Screen
