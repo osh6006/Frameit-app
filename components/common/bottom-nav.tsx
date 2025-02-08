@@ -1,17 +1,26 @@
-import { Href, useRouter, useSegments } from 'expo-router';
+import { Href, Link, useRouter, useSegments } from 'expo-router';
 
 import { useState } from 'react';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
-import { COLOR_PALETTE } from '@/constants/theme';
+import { COLOR_PALETTE, FONT_SYSTEM } from '@/constants/theme';
 
 import CustomIcon from '../icon/custom-icon';
 import { getFontStyle } from '@/lib/util';
 import CustomText from './custom-text';
+import OptionModal from './option-modal';
 
 export default function BottomNavigation() {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+
+  const onModalOpen = () => {
+    setIsModalVisible(true);
+  };
+
+  const onModalClose = () => {
+    setIsModalVisible(false);
+  };
 
   return (
     <View style={styles.container}>
@@ -25,7 +34,10 @@ export default function BottomNavigation() {
         path={'/(tabs)/feed'}
         icon={<CustomIcon name="feed" />}
       />
-      <TouchableOpacity style={styles.item}>
+      <TouchableOpacity
+        style={styles.item}
+        onPress={onModalOpen}
+      >
         <CustomIcon
           name="plusCircle"
           width={32}
@@ -42,6 +54,37 @@ export default function BottomNavigation() {
         path={'/(tabs)/my'}
         icon={<CustomIcon name="my" />}
       />
+      <OptionModal
+        isVisible={isModalVisible}
+        onClose={onModalClose}
+      >
+        <View
+          style={{
+            rowGap: 6,
+          }}
+        >
+          <Link
+            href="/(tabs)/feed"
+            onPress={onModalClose}
+          >
+            <View style={styles.optionContainer}>
+              <CustomIcon name="search" />
+              <CustomText style={styles.optionText}>모집글 업로드</CustomText>
+            </View>
+          </Link>
+          <Link
+            href="/(tabs)/feed"
+            onPress={onModalClose}
+          >
+            <View style={styles.optionContainer}>
+              <CustomIcon name="feed" />
+              <CustomText style={styles.optionText}>
+                포트폴리오 업로드
+              </CustomText>
+            </View>
+          </Link>
+        </View>
+      </OptionModal>
     </View>
   );
 }
@@ -85,6 +128,7 @@ const NavItem = ({
 };
 
 const fontTiny = getFontStyle('tiny10');
+const fontTitle16 = getFontStyle('title16');
 
 const styles = StyleSheet.create({
   container: {
@@ -115,5 +159,20 @@ const styles = StyleSheet.create({
     fontSize: fontTiny.fontSize,
     fontWeight: fontTiny.fontWeight,
     lineHeight: fontTiny.lineHeight,
+  },
+
+  optionContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 18,
+    paddingVertical: 9,
+  },
+
+  optionText: {
+    fontSize: fontTitle16.fontSize,
+    lineHeight: fontTitle16.lineHeight,
+    fontWeight: fontTitle16.fontWeight,
+    marginLeft: 13,
   },
 });

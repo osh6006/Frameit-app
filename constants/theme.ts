@@ -31,12 +31,12 @@ export const FONT_SYSTEM = {
   /*   === title ===  */
   title18: {
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: 600,
     lineHeight: 24.3,
   },
   title16: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: 600,
     lineHeight: 21.6,
   },
   /*   === body ===  */
