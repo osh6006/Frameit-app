@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { COLOR_PALETTE } from '@/constants/theme';
 import Logo from './logo';
+import CustomText from './custom-text';
 
 const Header = () => {
   const isLogin = true;
@@ -12,7 +13,7 @@ const Header = () => {
       <Logo />
       {isLogin ? (
         <View>
-          <Text style={styles.text}>로그인</Text>
+          <CustomText style={styles.text}>로그인</CustomText>
         </View>
       ) : (
         <View>
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     borderColor: COLOR_PALETTE.gray80,
   },
   text: {
-    color: 'white',
+    color: COLOR_PALETTE.gray10,
     fontSize: 16,
   },
 });
