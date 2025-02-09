@@ -7,6 +7,7 @@ const ChevronDownIcon = ({ width, height, color, ...rest }: SvgProps) => (
     height={height}
     fill="none"
     {...rest}
+    viewBox="0 0 24 24"
   >
     <G clipPath="url(#a)">
       <Path

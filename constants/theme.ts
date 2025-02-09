@@ -20,12 +20,12 @@ export const COLOR_PALETTE = {
 export const FONT_SYSTEM = {
   heading28: {
     fontSize: 28,
-    fontWeight: '600',
+    fontWeight: 600,
     lineHeight: 37.8,
   },
   heading24: {
     fontSize: 24,
-    fontWeight: '600',
+    fontWeight: 600,
     lineHeight: 32.4,
   },
   /*   === title ===  */
@@ -42,45 +42,45 @@ export const FONT_SYSTEM = {
   /*   === body ===  */
   body16: {
     fontSize: 16,
-    fontWeight: '400',
+    fontWeight: 400,
     lineHeight: 24,
   },
   body14: {
     fontSize: 14,
-    fontWeight: '400',
+    fontWeight: 400,
     lineHeight: 21,
   },
   body14M: {
     fontSize: 14,
-    fontWeight: '500',
+    fontWeight: 500,
     lineHeight: 21,
   },
   /*   === tag ===  */
   tag14: {
     fontSize: 14,
-    fontWeight: '400',
+    fontWeight: 400,
     lineHeight: 14,
   },
   tag12: {
     fontSize: 12,
-    fontWeight: '400',
+    fontWeight: 400,
     lineHeight: 12,
   },
   /*   === button ===  */
   button16: {
     fontSize: 16,
-    fontWeight: '400',
+    fontWeight: 400,
     lineHeight: 12,
   },
   button14: {
     fontSize: 14,
-    fontWeight: '400',
+    fontWeight: 400,
     lineHeight: 14,
   },
   /*   === tiny ===  */
   tiny10: {
     fontSize: 10,
-    fontWeight: 100,
+    fontWeight: 400,
     lineHeight: 14,
   },
 };

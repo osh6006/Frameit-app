@@ -2,13 +2,10 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Image, useImage } from 'expo-image';
 import { IMAGE_BLUR } from '@/constants/theme';
+import { FakeFeed } from '@/lib/faker';
 
-interface Props {
-  imageSrc: string;
-}
-
-const FeedItem = ({ imageSrc }: Props) => {
-  const image = useImage(imageSrc, {
+const FeedItem = ({ image: src }: FakeFeed) => {
+  const image = useImage(src, {
     maxWidth: 500,
     maxHeight: 458,
     onError(error) {
@@ -31,7 +28,7 @@ const FeedItem = ({ imageSrc }: Props) => {
         style={styles.image}
         source={image}
         contentFit="cover"
-        cachePolicy="disk"
+        cachePolicy="memory"
         placeholder={{ blurhash: IMAGE_BLUR }}
       />
     </View>

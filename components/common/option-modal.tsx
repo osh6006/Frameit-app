@@ -4,16 +4,29 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
   Animated,
+  View,
+  TouchableOpacity,
 } from 'react-native';
 import { PropsWithChildren } from 'react';
 import { COLOR_PALETTE } from '@/constants/theme';
+import CustomText from './custom-text';
+import CustomIcon from '../icon/custom-icon';
+import { getFontStyle } from '@/lib/util';
 
 type Props = PropsWithChildren<{
   isVisible: boolean;
+  title?: string;
   onClose: () => void;
+  height?: number | `${number}%`;
 }>;
 
-export default function OptionModal({ isVisible, children, onClose }: Props) {
+export default function OptionModal({
+  isVisible,
+  children,
+  onClose,
+  title,
+  height,
+}: Props) {
   const [modalVisible, setModalVisible] = useState(isVisible);
   const translateY = useRef(new Animated.Value(200)).current;
   const opacity = useRef(new Animated.Value(0)).current;
@@ -61,9 +74,23 @@ export default function OptionModal({ isVisible, children, onClose }: Props) {
         <Animated.View style={[styles.overlay, { opacity }]}>
           <TouchableWithoutFeedback>
             <Animated.View
-              style={[styles.modalContent, { transform: [{ translateY }] }]}
+              style={[
+                styles.modalContent,
+                { transform: [{ translateY }], height: height },
+              ]}
             >
-              {children}
+              {title && (
+                <View style={styles.titleContainer}>
+                  <CustomText style={styles.title}>{title}</CustomText>
+                  <TouchableOpacity onPress={onClose}>
+                    <CustomIcon
+                      name="X"
+                      color={COLOR_PALETTE.gray20}
+                    />
+                  </TouchableOpacity>
+                </View>
+              )}
+              <View style={styles.childrenContainer}>{children}</View>
             </Animated.View>
           </TouchableWithoutFeedback>
         </Animated.View>
@@ -72,6 +99,7 @@ export default function OptionModal({ isVisible, children, onClose }: Props) {
   );
 }
 
+const title18 = getFontStyle('title18');
 const styles = StyleSheet.create({
   overlay: {
     flex: 1,
@@ -90,7 +118,6 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     height: 50,
-    backgroundColor: '#464C55',
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
     paddingHorizontal: 20,
@@ -99,7 +126,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   title: {
-    color: '#fff',
-    fontSize: 16,
+    fontFamily: title18.fontFamily,
+    fontSize: title18.fontSize,
+    lineHeight: title18.lineHeight,
+    color: COLOR_PALETTE.gray10,
+  },
+
+  childrenContainer: {
+    flex: 1,
+    paddingHorizontal: 20,
   },
 });

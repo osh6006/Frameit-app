@@ -4,7 +4,7 @@ import { useState } from 'react';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
-import { COLOR_PALETTE, FONT_SYSTEM } from '@/constants/theme';
+import { COLOR_PALETTE } from '@/constants/theme';
 
 import CustomIcon from '../icon/custom-icon';
 import { getFontStyle } from '@/lib/util';
@@ -153,8 +153,8 @@ const styles = StyleSheet.create({
   },
 
   itemText: {
+    fontFamily: fontTiny.fontFamily,
     fontSize: fontTiny.fontSize,
-    fontWeight: fontTiny.fontWeight,
     lineHeight: fontTiny.lineHeight,
   },
 
@@ -167,9 +167,9 @@ const styles = StyleSheet.create({
   },
 
   optionText: {
+    fontFamily: fontTiny.fontFamily,
     fontSize: fontTitle16.fontSize,
     lineHeight: fontTitle16.lineHeight,
-    fontWeight: fontTitle16.fontWeight,
     marginLeft: 13,
   },
 });

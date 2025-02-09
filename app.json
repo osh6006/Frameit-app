@@ -47,7 +47,15 @@
         {
           "fonts": [
             "./assets/fonts/PretendardVariable.ttf",
-            "./assets/fonts/test.ttf"
+            "./assets/fonts/test.ttf",
+            "./assets/fonts/Pretendard-Thin.otf",
+            "./assets/fonts/Pretendard-ExtraLight.otf",
+            "./assets/fonts/Pretendard-Light.otf",
+            "./assets/fonts/Pretendard-Regular.otf",
+            "./assets/fonts/Pretendard-Medium.otf",
+            "./assets/fonts/Pretendard-SemiBold.otf",
+            "./assets/fonts/Pretendard-Bold.otf",
+            "./assets/fonts/Pretendard-ExtraBold.otf"
           ]
         }
       ]

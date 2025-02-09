@@ -18,7 +18,6 @@ const PlusCircleIcon = ({ width, height, color, ...rest }: SvgProps) => (
     <G
       stroke={color}
       strokeWidth={2}
-      clipPath="url(#a)"
     >
       <Circle
         cx={16}
@@ -30,14 +29,6 @@ const PlusCircleIcon = ({ width, height, color, ...rest }: SvgProps) => (
         d="M16 10v12M22 16H10"
       />
     </G>
-    <Defs>
-      <ClipPath id="a">
-        <Path
-          fill="#fff"
-          d="M0 0h32v32H0z"
-        />
-      </ClipPath>
-    </Defs>
   </Svg>
 );
 export default PlusCircleIcon;
